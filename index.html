@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="+400 atividades bíblicas infantis prontas para imprimir. PDF na hora no seu e-mail.">
+<title>Kit Bíblico Infantil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: coluna única estilo "folha de atividade" — papel pontilhado, faixas azuis, CTA amarelo-giz repetido */
+:root{
+  --paper:#F6F9FF; --sheet:#FFFFFF; --ink:#14244F; --muted:#56638A; --line:#DCE4F5;
+  --sky:#2F6FE4; --sky-soft:#E3EDFF; --sun:#FFC52E; --sun-deep:#E8A800; --leaf:#22955F; --leaf-soft:#E2F5EA; --rose:#EF5B5B;
+  --f-display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;
+  background-image:radial-gradient(var(--line) 1.2px,transparent 1.2px);background-size:22px 22px;padding-bottom:84px}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:56px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,6vw,40px);font-weight:800}
+h3{font-size:21px;font-weight:700}
+p{margin:0}
+.kicker{font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--sky)}
+.center{text-align:center}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#16A05A;color:#fff;
+  font-family:var(--f-display);font-weight:800;font-size:20px;letter-spacing:.02em;text-decoration:none;
+  padding:16px 26px;border-radius:14px;border:2px solid var(--ink);box-shadow:0 5px 0 var(--ink);transition:transform .12s,box-shadow .12s;text-align:center}
+.btn:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--ink)}
+.btn:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.btn.full{width:100%}
+.btn.ghost{background:var(--sheet);color:var(--ink)}
+.cta-note{font-size:14px;color:var(--muted);font-weight:700;margin-top:10px}
+
+/* topo */
+.tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding-top:18px}
+.tag{background:var(--sheet);border:1.5px solid var(--line);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:800;color:var(--muted)}
+
+/* hero */
+.hero{padding-block:24px 52px;overflow-x:clip}
+.hero .wrap{max-width:1080px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "art" "act";text-align:center;justify-items:center}
+.hero-copy{grid-area:copy;display:flex;flex-direction:column;align-items:center;gap:18px}
+.hero-act{grid-area:act;display:flex;flex-direction:column;align-items:center}
+.hero-art{grid-area:art;width:100%}
+.sticker{display:inline-flex;align-items:center;gap:10px;background:var(--sun);color:var(--ink);border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink);border-radius:16px;padding:6px 18px 6px 14px;transform:rotate(-3deg);font-family:var(--f-display);font-weight:800;line-height:1}
+.sticker b{font-size:44px;letter-spacing:-.02em}
+.sticker span{font-size:17px;text-align:left;line-height:1.05}
+.hero h1{font-size:clamp(38px,8.6vw,66px);font-weight:800;color:var(--ink);line-height:1.02;letter-spacing:-.015em;max-width:13ch}
+.hero h1 em{font-style:normal;color:var(--sky);position:relative;white-space:nowrap;z-index:0}
+.hero h1 em::after{content:"";position:absolute;z-index:-1;left:-2%;right:-2%;bottom:-.06em;height:.3em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 20' preserveAspectRatio='none'%3E%3Cpath d='M3 14C40 5 90 3 197 9' fill='none' stroke='%23FFC52E' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/100% 100%}
+.hero .sub{font-size:19px;color:var(--muted);max-width:34ch;line-height:1.5}
+.hero .sub b{color:var(--ink)}
+.hook{font-weight:700;color:var(--muted);font-size:15px;margin:0}
+@media (min-width:860px){
+  .hero{padding-block:48px 64px}
+  .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);grid-template-areas:"copy art" "act art";text-align:left;justify-items:start;column-gap:24px;align-items:center}
+  .hero-copy,.hero-act{align-items:flex-start}
+  .hero-copy{align-self:end}
+  .hero-act{align-self:start;margin-top:26px}
+  .hero-act .badges{justify-content:flex-start}
+  .hero h1{max-width:15ch}
+  .hero-art .sheets{height:420px;max-width:540px}
+  .hero-art .sheet{width:240px}
+}
+.sheets{position:relative;height:330px;margin:34px auto 26px;max-width:420px}
+.sheet{position:absolute;width:190px;height:auto;aspect-ratio:374/584;object-fit:cover;background:var(--sheet);border:2px solid var(--ink);border-radius:6px;box-shadow:0 10px 24px rgba(20,36,79,.18);max-width:100%}
+.sheet.s1{left:50%;top:18px;transform:translateX(-118%) rotate(-8deg)}
+.sheet.s2{left:50%;top:0;transform:translateX(-50%) rotate(1deg);z-index:2}
+.sheet.s3{left:50%;top:22px;transform:translateX(18%) rotate(8deg)}
+.badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:26px}
+.badge{display:flex;align-items:center;gap:6px;font-weight:800;font-size:14px;background:var(--leaf-soft);color:var(--leaf);padding:7px 12px;border-radius:10px}
+
+/* faixa azul */
+.band{background:var(--sky);color:#fff;background-image:none}
+.band .kicker{color:var(--sun)}
+.band h2{color:#fff}
+
+/* histórias (carrossel) */
+.carousel{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 18px;margin-top:22px;-webkit-overflow-scrolling:touch}
+.story{flex:0 0 200px;scroll-snap-align:start;background:var(--sheet);color:var(--ink);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;border:2px solid var(--ink)}
+.story img{width:100%;height:auto;aspect-ratio:440/622;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.story b{font-family:var(--f-display);font-size:17px;line-height:1.15}
+.story span{font-size:13px;color:var(--muted);font-weight:700}
+.swipe{font-size:14px;font-weight:700;opacity:.85;margin-top:6px}
+
+/* volumes */
+.vols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+.vol{background:var(--sheet);border:2px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.vol.has-img{display:grid;grid-template-columns:64px minmax(0,1fr);gap:4px 12px;align-items:center}
+.vol.has-img img{grid-row:span 3;width:64px;height:auto;aspect-ratio:374/584;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+/* por dentro */
+.inside{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+.inside figure{margin:0;display:flex;flex-direction:column;gap:8px}
+.inside img{width:100%;height:auto;aspect-ratio:374/560;object-fit:cover;object-position:top;background:#fff;border:2px solid var(--ink);border-radius:8px;display:block}
+.inside figcaption{font-weight:800;font-size:14px;text-align:center}
+@media (max-width:560px){.inside{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vol .v-tag{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--sky)}
+.vol b{font-family:var(--f-display);font-size:19px;line-height:1.15}
+.vol p{font-size:14px;color:var(--muted)}
+.total{margin-top:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:var(--ink);color:#fff;border-radius:14px;padding:14px 18px;font-weight:800}
+.total .pill{background:var(--sun);color:var(--ink);border-radius:99px;padding:4px 12px;font-size:13px}
+
+/* bônus */
+.bonus-band{background:var(--sun);background-image:none}
+.bonus-band .kicker{color:var(--ink)}
+.bonuses{display:grid;gap:18px;margin-top:24px}
+.bonus{display:grid;grid-template-columns:200px minmax(0,1fr);gap:20px;align-items:center;background:var(--sheet);border:2px solid var(--ink);border-radius:18px;padding:18px;box-shadow:0 6px 0 var(--ink)}
+.b-img{position:relative}
+.b-img img{width:100%;height:auto;aspect-ratio:495/700;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.b-img.duo{padding-right:28px;padding-bottom:20px}
+.b-img.duo img+img{position:absolute;width:62%;right:0;bottom:0;transform:rotate(5deg);box-shadow:0 6px 16px rgba(20,36,79,.2)}
+.b-txt{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.b-tag{background:var(--ink);color:var(--sun);font-weight:800;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:99px}
+.b-txt h3{font-size:24px}
+.b-txt p{color:var(--muted);font-size:16px}
+.b-free{font-weight:800;color:var(--leaf);font-size:14px}
+@media (max-width:560px){.bonus{grid-template-columns:minmax(0,1fr)}.b-img{max-width:240px;margin:0 auto;width:100%}}
+
+/* passos */
+.steps{display:grid;gap:12px;margin-top:24px}
+.step{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:center;background:var(--sheet);border:2px solid var(--line);border-radius:14px;padding:14px}
+.step .n{width:52px;height:52px;border-radius:50%;background:var(--sun);border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:800;font-size:24px}
+.step b{font-family:var(--f-display);font-size:19px}
+.step p{font-size:15px;color:var(--muted)}
+
+/* público */
+.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px}
+.who div{background:var(--sheet);border-radius:14px;padding:16px;border:2px solid var(--line)}
+.who svg{width:40px;height:40px;margin-bottom:8px}
+.who b{font-family:var(--f-display);font-size:18px;display:block;line-height:1.15;margin-bottom:4px}
+.who p{font-size:14px;color:var(--muted)}
+.quote-line{margin-top:22px;font-family:var(--f-display);font-size:22px;font-weight:700;text-align:center;color:var(--ink)}
+
+/* planos */
+.plans{display:grid;gap:16px;margin-top:26px}
+.plan{background:var(--sheet);color:var(--ink);border:2px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px;position:relative}
+.plan.best{border:3px solid var(--ink);box-shadow:0 8px 0 var(--sun);order:-1}
+.plan .ribbon{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--leaf);color:#fff;font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:5px 14px;border-radius:99px;white-space:nowrap}
+.plan-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.plan-name{font-family:var(--f-display);font-size:24px;font-weight:800;line-height:1.1}
+.plan-name small{display:block;font-family:var(--f-body);font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.price{font-family:var(--f-display);font-weight:800;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.price-box{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.old{font-weight:800;font-size:16px;color:#D7263D;text-decoration-thickness:2px}
+.price sup{font-size:.42em;vertical-align:.9em;margin-right:2px}
+.plan ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.plan li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;font-size:16px;font-weight:600}
+.plan li::before{content:"";width:20px;height:20px;margin-top:2px;border-radius:50%;background:var(--leaf-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 10.5l3.2 3L15 6.5' fill='none' stroke='%2322955F' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.plan li.plus::before{background-color:var(--sun)}
+.plan .per{font-size:13px;color:var(--muted);font-weight:700}
+.plan.best .btn{font-size:21px}
+.secure{display:flex;gap:6px;align-items:center;justify-content:center;font-size:13px;color:var(--muted);font-weight:700}
+
+/* garantia */
+.guarantee{display:grid;grid-template-columns:120px minmax(0,1fr);gap:20px;align-items:center;background:var(--sheet);border:2px dashed var(--ink);border-radius:18px;padding:22px}
+.seal{width:120px;height:120px}
+.guarantee h3{font-size:26px;margin-bottom:6px}
+.guarantee p{color:var(--muted)}
+
+/* pagamento */
+.pay{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:22px}
+.pay div{background:var(--sheet);border:2px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.pay b{display:block;font-family:var(--f-display);font-size:17px}
+.pay span{font-size:13px;color:var(--muted);font-weight:600}
+
+/* FAQ */
+.faq{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.faq details{background:var(--sheet);border:2px solid var(--line);border-radius:14px;padding:4px 16px}
+.faq summary{cursor:pointer;font-weight:800;font-size:17px;padding:12px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-display);font-size:24px;line-height:1;color:var(--sky)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding-bottom:14px;color:var(--muted);font-size:16px}
+.faq summary:focus-visible{outline:3px solid var(--sky);outline-offset:2px;border-radius:6px}
+
+footer{padding-block:30px 20px;text-align:center;font-size:13px;color:var(--muted)}
+
+/* barra fixa */
+.stickybar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ink);color:#fff;
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.stickybar .in{max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stickybar .t{font-weight:800;font-size:15px;line-height:1.2;min-width:0}
+.stickybar .t small{display:block;font-weight:600;opacity:.75;font-size:12px}
+.stickybar .btn{font-size:16px;padding:10px 16px;box-shadow:0 3px 0 #000;border-color:#000;white-space:nowrap}
+
+@media (max-width:560px){
+  .who{grid-template-columns:minmax(0,1fr)}
+  .vols{grid-template-columns:minmax(0,1fr)}
+  .pay{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .guarantee{grid-template-columns:minmax(0,1fr);text-align:center;justify-items:center}
+  .sheet{width:150px}
+  .sheets{height:270px}
+}
+@media (min-width:760px){
+  .plans{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;max-width:820px;margin-inline:auto}
+  .plan.best{order:0;margin-top:-10px}
+  .wrap.wide{max-width:1040px}
+}
+/* hero escuro chamativo */
+.hero{background:var(--ink);color:#fff;background-image:radial-gradient(rgba(255,255,255,.13) 1.6px,transparent 1.6px),radial-gradient(circle at 30% 20%,#23408A 0,var(--ink) 65%);background-size:26px 26px,100% 100%}
+.hero-copy{gap:14px}
+.hero-pill{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--sun);background:rgba(255,197,46,.12);border:1.5px solid rgba(255,197,46,.45);border-radius:99px;padding:7px 16px}
+.hero .hook{color:var(--sun);font-family:var(--f-display);font-weight:700;font-size:clamp(20px,4.6vw,26px);line-height:1.2;margin:0}
+.hero h1{color:#fff;font-size:clamp(40px,9.6vw,70px);line-height:1;max-width:none;letter-spacing:-.02em;text-shadow:0 4px 0 rgba(0,0,0,.25)}
+.hero h1 em{display:block;color:var(--sun);white-space:normal;font-style:normal}
+.hero h1 em::after{display:none}
+.hero .sub{color:rgba(255,255,255,.88);font-size:19px;max-width:36ch}
+.hero .sub b{color:#fff}
+.hero .cta-note{color:rgba(255,255,255,.7)}
+.hero .badge{background:rgba(34,149,95,.18);color:#7BE0AE}
+.hero .sheet{border-color:#fff;box-shadow:0 18px 36px rgba(0,0,0,.4)}
+.hero .btn{border-color:#000;box-shadow:0 5px 0 #000,0 10px 28px rgba(22,160,90,.45)}
+@media (min-width:860px){.hero h1{max-width:16ch;font-size:64px}}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:#D7263D;color:#fff;font-weight:800;font-size:14px;text-align:center;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;padding:9px max(16px,env(safe-area-inset-right,0px)) 9px max(16px,env(safe-area-inset-left,0px))}
+.topbar b{font-variant-numeric:tabular-nums;background:rgba(0,0,0,.22);padding:1px 8px;border-radius:6px;margin-left:2px}
+.topbar .tb-sub{font-weight:600;opacity:.9}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:31;background:#D7263D}
+.types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}
+.tp{display:flex;align-items:center;gap:14px;background:var(--sheet);border:1.5px solid #EADFD3;border-radius:16px;padding:14px 16px;min-width:0}
+.tp-ic{flex:0 0 48px;height:48px;border-radius:12px;background:var(--c);display:grid;place-items:center;font-size:24px}
+.tp b{display:block;font-weight:800;font-size:16px;line-height:1.2;color:var(--ink)}
+.tp div span{display:block;font-weight:800;font-size:15px;color:var(--c)}
+.tp-total{background:var(--ink);border-color:var(--ink);flex-direction:column;justify-content:center;gap:2px;text-align:center}
+.tp-total b{color:var(--sun);font-family:var(--f-display);font-size:20px}
+.tp-total span{color:var(--sun);font-weight:800}
+@media (max-width:560px){.types{grid-template-columns:minmax(0,1fr)}}
+</style>
+<style>body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+
+
+
+<div class="topbar" role="status"><span>🔥 Garanta hoje na promoção <b id="cd">--:--:--</b></span><span class="tb-sub">PDF chega na hora no seu e-mail</span></div>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-pill">⭐ Escola Bíblica e famílias</span>
+        <p class="hook">Troque o tempo de tela pela Palavra de Deus 📱➡️📖</p>
+        <h1>+400 atividades bíblicas <em>prontas pra imprimir</em></h1>
+        <p class="sub">Da Criação ao Nascimento de Jesus. <b>Baixou, imprimiu, a criança já está pintando e aprendendo a Palavra.</b> PDF na hora no seu e-mail.</p>
+      </div>
+
+      <div class="hero-art">
+        <div class="sheets">
+          <img class="sheet s1" src="img/at1.jpg" alt="Capa do Antigo Testamento, Parte I" width="374" height="584">
+          <img class="sheet s2" src="img/nt.jpg" alt="Capa do Novo Testamento" width="374" height="584">
+          <img class="sheet s3" src="img/pinte-imagem.jpg" alt="Atividade Pinte a Imagem do Novo Testamento" width="374" height="584">
+        </div>
+      </div>
+
+      <div class="hero-act">
+        <div class="badges">
+          <span class="badge">✓ PDF na hora</span>
+          <span class="badge">✓ Imprime em A4</span>
+          <span class="badge">✓ A partir de R$ 8,90</span>
+        </div>
+        <a class="btn" href="#oferta">VER OS PLANOS ↓</a>
+        <p class="cta-note">Pagamento único · Pix ou cartão</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Olha o que você recebe</p>
+    <h2>Histórias da Bíblia que viram atividade</h2>
+    <div class="carousel" tabindex="0" aria-label="Histórias do kit, arraste para o lado">
+      <div class="story">
+        <img src="img/s-criacao.jpg" alt="Capa da sequência didática A Criação do Mundo" width="440" height="622" loading="lazy">
+        <b>A Criação do Mundo</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-humanidade.jpg" alt="Capa da sequência didática A Criação da Humanidade" width="440" height="622" loading="lazy">
+        <b>A Criação da Humanidade</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-arca.jpg" alt="Capa da sequência didática A Arca de Noé" width="440" height="622" loading="lazy">
+        <b>A Arca de Noé</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-jonas.jpg" alt="Capa da sequência didática Jonas e o Grande Peixe" width="440" height="622" loading="lazy">
+        <b>Jonas e o Grande Peixe</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-samuel.jpg" alt="Capa da sequência didática Samuel, o Servo de Deus" width="440" height="622" loading="lazy">
+        <b>Samuel, o Servo de Deus</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-nascimento.jpg" alt="Capa da sequência didática Nascimento de Jesus" width="440" height="622" loading="lazy">
+        <b>Nascimento de Jesus</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-davi.jpg" alt="Capa da sequência didática Davi e Golias" width="440" height="622" loading="lazy">
+        <b>Davi e Golias</b><span>Sequência didática completa</span>
+      </div>
+      <div class="story">
+        <img src="img/s-samaritano.jpg" alt="Capa da sequência didática O Bom Samaritano" width="440" height="622" loading="lazy">
+        <b>O Bom Samaritano</b><span>Sequência didática completa</span>
+      </div>
+    </div>
+    <p class="swipe">← arraste para o lado →</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker center">Veja por dentro</p>
+    <h2 class="center">Páginas reais do kit</h2>
+    <div class="inside">
+      <figure><img src="img/banco-palavras.jpg" alt="Página de atividade: Banco de palavras" width="374" height="584" loading="lazy"><figcaption>Banco de palavras</figcaption></figure>
+      <figure><img src="img/cards.jpg" alt="Página de atividade: Cards ilustrados" width="374" height="584" loading="lazy"><figcaption>Cards ilustrados</figcaption></figure>
+      <figure><img src="img/pinte-sol.jpg" alt="Página de atividade: Pintar e colorir" width="374" height="584" loading="lazy"><figcaption>Pintar e colorir</figcaption></figure>
+      <figure><img src="img/caca-palavras.jpg" alt="Página de atividade: Caça-palavras" width="374" height="584" loading="lazy"><figcaption>Caça-palavras</figcaption></figure>
+      <figure><img src="img/labirinto.jpg" alt="Página de atividade: Labirinto" width="374" height="584" loading="lazy"><figcaption>Labirinto</figcaption></figure>
+      <figure><img src="img/quiz.jpg" alt="Página de atividade: Perguntas da história" width="374" height="584" loading="lazy"><figcaption>Perguntas da história</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker center">O que tem no kit</p>
+    <h2 class="center">Da Criação a Jesus, organizado por história</h2>
+    <div class="types">
+      <div class="tp" style="--c:#E5484D"><span class="tp-ic">🌍</span><div><b>A Criação, Adão e Eva</b><span>62 atividades</span></div></div>
+      <div class="tp" style="--c:#1F9E8F"><span class="tp-ic">🌈</span><div><b>Noé, Torre de Babel e Abraão</b><span>35 atividades</span></div></div>
+      <div class="tp" style="--c:#E8862A"><span class="tp-ic">⛺</span><div><b>Ló, Isaque, Esaú e Jacó</b><span>25 atividades</span></div></div>
+      <div class="tp" style="--c:#8E44AD"><span class="tp-ic">🧥</span><div><b>José do Egito</b><span>21 atividades</span></div></div>
+      <div class="tp" style="--c:#2F6FE4"><span class="tp-ic">📜</span><div><b>Moisés, reis e profetas</b><span>57 atividades</span></div></div>
+      <div class="tp" style="--c:#16A05A"><span class="tp-ic">✝️</span><div><b>Vida de Jesus (Novo Testamento)</b><span>98 atividades</span></div></div>
+      <div class="tp" style="--c:#D6337A"><span class="tp-ic">🌱</span><div><b>Sementinhas de Cristo</b><span>8 sequências de alfabetização</span></div></div>
+      <div class="tp tp-total"><b>Total: +400 atividades</b><span>+ 2 bônus</span></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="bonus-band">
+  <div class="wrap">
+    <p class="kicker center">De presente pra você</p>
+    <h2 class="center">+ 2 bônus inclusos em todos os planos</h2>
+    <div class="bonuses">
+      <article class="bonus">
+        <div class="b-img"><img src="img/b-memoria.jpg" alt="Cartas do Jogo da Memória Bíblico com cenas da Bíblia" width="495" height="700" loading="lazy"></div>
+        <div class="b-txt">
+          <span class="b-tag">Bônus 1</span>
+          <h3>Jogo da Memória Bíblico</h3>
+          <p>Cartas ilustradas com cenas e personagens da Bíblia. É só imprimir, recortar e jogar com a turma ou em família, revisando as histórias brincando.</p>
+          <span class="b-free">Grátis no kit</span>
+        </div>
+      </article>
+      <article class="bonus">
+        <div class="b-img duo"><img src="img/b-potinho.jpg" alt="Capa do Potinho da Fé, 360 orações para dormir" width="495" height="700" loading="lazy"><img src="img/b-oracoes.jpg" alt="Página com as orações do Potinho da Fé" width="495" height="700" loading="lazy"></div>
+        <div class="b-txt">
+          <span class="b-tag">Bônus 2</span>
+          <h3>Potinho da Fé: 360 orações para dormir</h3>
+          <p>Uma oração curtinha pra cada noite. Imprima, recorte e coloque num potinho: a criança sorteia uma e ora antes de dormir.</p>
+          <span class="b-free">Grátis no kit</span>
+        </div>
+      </article>
+    </div>
+    <p class="center" style="margin-top:28px"><a class="btn" href="#oferta">QUERO O KIT + BÔNUS ↓</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker center">Como funciona</p>
+    <h2 class="center">Do celular pra folha em 3 passos</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><div><b>Escolha o plano</b><p>Pague no Pix ou no cartão, a partir de R$ 8,90.</p></div></div>
+      <div class="step"><span class="n">2</span><div><b>Receba na hora</b><p>O acesso aos PDFs chega no seu e-mail assim que o pagamento é aprovado.</p></div></div>
+      <div class="step"><span class="n">3</span><div><b>Imprima e use</b><p>Em casa, na igreja ou na papelaria. A criança já começa a atividade.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker center">Pra quem é</p>
+    <h2 class="center">Feito pra quem ensina a Palavra às crianças</h2>
+    <div class="who">
+      <div>
+        <svg viewBox="0 0 40 40" fill="none" stroke="#2F6FE4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12a4 4 0 0 1 4 4v22a3 3 0 0 0-3-3H6zM34 8H24a4 4 0 0 0-4 4"/><path d="M34 8v23H23"/></svg>
+        <b>Professoras</b><p>Aula pronta, sem passar a noite montando atividade.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 40 40" fill="none" stroke="#22955F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 34C10 27 4 21 4 14a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 7-6 13-16 20z"/></svg>
+        <b>Mães e pais cristãos</b><p>Um devocional diferente por dia, longe da tela.</p>
+      </div>
+      <div>
+        <svg viewBox="0 0 40 40" fill="none" stroke="#E8A800" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4v10M15 9h10M8 36V20l12-6 12 6v16M16 36v-8h8v8"/></svg>
+        <b>Ministério infantil</b><p>Material pro culto kids, retiros e datas especiais.</p>
+      </div>
+    </div>
+    <p class="quote-line">“Ensina a criança no caminho em que deve andar.” <span style="font-size:16px;color:var(--muted)">Pv 22:6</span></p>
+  </div>
+</section>
+
+<section id="oferta" class="band">
+  <div class="wrap wide">
+    <p class="kicker center">Escolha seu kit</p>
+    <h2 class="center">Leve hoje a partir de R$ 8,90</h2>
+    
+    <div class="plans">
+
+      <div class="plan">
+        <div class="plan-head">
+          <div class="plan-name"><small>Plano</small>Essencial</div>
+          <div class="price-box"><s class="old">De R$ 39,90</s><div class="price"><sup>R$</sup>8,90</div></div>
+        </div>
+        <ul>
+          <li>+400 Atividades Bíblicas</li>
+          <li>Velho e Novo Testamento</li>
+          <li>Coleção Sementinhas de Cristo</li>
+          <li class="plus">Bônus 1: Jogo da Memória Bíblico</li>
+          <li class="plus">Bônus 2: Potinho da Fé (360 orações)</li>
+        </ul>
+        <!-- TROQUE PELO LINK DE CHECKOUT DO PLANO ESSENCIAL -->
+        <a class="btn ghost full" href="https://castelinho-do-saber.mycartpanda.com/checkout/214478026:1">QUERO O ESSENCIAL</a>
+        <p class="per center">Cerca de 2 centavos por atividade</p>
+      </div>
+
+      <div class="plan best">
+        <span class="ribbon">Melhor custo-benefício</span>
+        <div class="plan-head">
+          <div class="plan-name"><small>Plano</small>Evolução Cristã</div>
+          <div class="price-box"><s class="old">De R$ 89,90</s><div class="price"><sup>R$</sup>19,90</div></div>
+        </div>
+        <ul>
+          <li>Tudo do plano Essencial (+400 atividades e 2 bônus)</li>
+          <li class="plus">Kits de Colorir</li>
+          <li class="plus">Histórias Bíblicas Coloridas (+60)</li>
+          <li class="plus">Jogos Bíblicos</li>
+          <li class="plus">Devocionais</li>
+          <li class="plus">Presépios 3D</li>
+          <li class="plus">Kit Os 10 Mandamentos</li>
+          <li class="plus">Kit Os Milagres de Jesus</li>
+          <li class="plus">Kit Atividades de Natal</li>
+        </ul>
+        <!-- TROQUE PELO LINK DE CHECKOUT DO PLANO EVOLUÇÃO CRISTÃ -->
+        <a class="btn full" href="https://castelinho-do-saber.mycartpanda.com/checkout/214480500:1">QUERO O KIT COMPLETO →</a>
+        <p class="per center">Já com o Kit de Natal pra dezembro</p>
+      </div>
+
+
+    </div>
+    <p class="secure" style="color:#fff;margin-top:22px">🔒 Pagamento 100% seguro · Pix ou cartão</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="guarantee">
+      <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+        <circle cx="60" cy="60" r="56" fill="#FFC52E" stroke="#14244F" stroke-width="3"/>
+        <circle cx="60" cy="60" r="44" fill="none" stroke="#14244F" stroke-width="2" stroke-dasharray="4 5"/>
+        <text x="60" y="62" text-anchor="middle" font-family="Baloo 2, sans-serif" font-weight="800" font-size="38" fill="#14244F">7</text>
+        <text x="60" y="84" text-anchor="middle" font-family="Nunito, sans-serif" font-weight="800" font-size="12" letter-spacing="1.5" fill="#14244F">DIAS</text>
+      </svg>
+      <div>
+        <h3>Compra sem risco</h3>
+        <p>Se em até 7 dias o material não servir pra você, é só pedir o reembolso e receber 100% do valor de volta. Simples assim.</p>
+      </div>
+    </div>
+    <p class="center" style="margin-top:24px"><a class="btn" href="#oferta">QUERO MEU KIT SEM RISCO →</a></p>
+
+    <div class="pay">
+      <div><b>Pix</b><span>Aprovação em segundos</span></div>
+      <div><b>Cartão</b><span>Pagamento único</span></div>
+      <div><b>Seguro</b><span>Checkout protegido</span></div>
+      <div><b>Na hora</b><span>Acesso no seu e-mail</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker center">Dúvidas rápidas</p>
+    <h2 class="center">Perguntas frequentes</h2>
+    <div class="faq">
+      <details><summary>Como eu recebo o kit?</summary><p>Assim que o pagamento é confirmado, o acesso aos PDFs chega no seu e-mail. No Pix isso leva segundos.</p></details>
+      <details><summary>Tem mensalidade?</summary><p>Não. É um pagamento único e os arquivos são seus.</p></details>
+      <details><summary>Posso imprimir quantas vezes quiser?</summary><p>Sim, pra sua turma, sua igreja ou seus filhos. Só não é permitido revender ou compartilhar os arquivos.</p></details>
+      <details><summary>Preciso de impressora colorida?</summary><p>Não. As atividades de pintar funcionam em preto e branco. As Histórias Coloridas e os jogos ficam mais bonitos em cor, mas dá pra usar em P&amp;B.</p></details>
+      <details><summary>Pra qual idade é?</summary><p>Pensado pra crianças da Educação Infantil e dos anos iniciais, com atividades de pintar, ligar, recortar e contar a história.</p></details>
+      <details><summary>Qual plano eu escolho?</summary><p>Se quer as +400 atividades com 2 bônus, o Essencial (R$ 8,90) resolve. Se vai usar o ano inteiro e quer todos os kits, incluindo o de Natal, o Evolução Cristã (R$ 19,90) sai com o melhor custo-benefício.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><b>Kit Bíblico Infantil</b> · material digital em PDF para impressão</p>
+  </div>
+</footer>
+
+<div class="stickybar" role="region" aria-label="Atalho para a oferta">
+  <div class="in">
+    <div class="t">+400 atividades bíblicas<small>a partir de R$ 8,90 · PDF na hora</small></div>
+    <a class="btn" href="#oferta">VER PLANOS</a>
+  </div>
+</div>
+
+<script>
+(function(){var el=document.getElementById('cd');function t(){var n=new Date(),m=new Date(n);m.setHours(24,0,0,0);var d=Math.max(0,Math.floor((m-n)/1000));
+var h=String(Math.floor(d/3600)).padStart(2,'0'),mi=String(Math.floor(d%3600/60)).padStart(2,'0'),se=String(d%60).padStart(2,'0');el.textContent=h+':'+mi+':'+se}t();setInterval(t,1000)})();
+</script>
+</body>
+</html>
