@@ -3,8 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="+400 atividades bíblicas infantis prontas para imprimir. PDF na hora no seu e-mail.">
+<meta name="description" content="+400 atividades biblicas infantis prontas para imprimir. PDF na hora no seu e-mail.">
 <title>Kit Bíblico Infantil</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1870795670769609');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap">
@@ -236,10 +250,54 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .tp-total b{color:var(--sun);font-family:var(--f-display);font-size:20px}
 .tp-total span{color:var(--sun);font-weight:800}
 @media (max-width:560px){.types{grid-template-columns:minmax(0,1fr)}}
+
+/* ===== desktop ===== */
+@media (min-width:860px){
+  .wrap{max-width:1040px}
+  .wrap.wide{max-width:1040px}
+  section{padding-block:72px}
+
+  /* hero mais equilibrado */
+  .hero .wrap{max-width:1140px}
+  .hero-grid{column-gap:48px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .hero h1{font-size:56px;max-width:none}
+  .hero .hook{font-size:24px}
+  .hero .sub{font-size:20px;max-width:42ch}
+
+  /* historias viram grade: nada de arrastar no PC */
+  .carousel{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;overflow:visible;padding-bottom:0}
+  .swipe{display:none}
+
+  /* tipos de atividade em 3 colunas */
+  .types{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+  /* bonus lado a lado */
+  .bonuses{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+  .bonus{grid-template-columns:minmax(0,1fr);align-content:start;height:100%}
+  .bonus .b-img{max-width:230px;margin:0 auto;width:100%}
+
+  /* passos em 3 colunas */
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .step{align-items:flex-start}
+
+  /* planos com a mesma altura e botoes alinhados */
+  .plans{max-width:900px;align-items:stretch}
+  .plan{height:100%}
+  .plan .btn{margin-top:auto}
+
+  /* blocos de leitura nao esticam demais */
+  .guarantee,.pay,.faq{max-width:880px;margin-inline:auto}
+}
+@media (min-width:1000px){
+  .inside{grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+}
 </style>
 <style>body{margin:0}img{max-width:100%}</style>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1870795670769609&ev=PageView&noscript=1"
+/></noscript>
 
 
 
@@ -250,7 +308,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     <div class="hero-grid">
       <div class="hero-copy">
         <span class="hero-pill">⭐ Escola Bíblica e famílias</span>
-        <p class="hook">Troque o tempo de tela pela Palavra de Deus 📱➡️📖</p>
+        <p class="hook">Troque o tempo de tela pela Palavra de Deus 📱➡️📖</p>
         <h1>+400 atividades bíblicas <em>prontas pra imprimir</em></h1>
         <p class="sub">Da Criação ao Nascimento de Jesus. <b>Baixou, imprimiu, a criança já está pintando e aprendendo a Palavra.</b> PDF na hora no seu e-mail.</p>
       </div>
